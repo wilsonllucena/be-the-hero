@@ -1,81 +1,80 @@
-import React from 'react';
-import { Link } from 'react-router-dom'
+import React , {useState, useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom'
 import { FiPower, FiTrash2 } from 'react-icons/fi'
 import  './style.css'
 import logoImg from '../../assets/logo.svg';
 
+import api from '../../services/api';
+
+
 export default function Profile (){
+
+    const history = useHistory();
+    const [ incidents, setIncidents ] = useState([]);
+
+    const ongId = localStorage.getItem('ongId');
+    const ongName = localStorage.getItem('ongName');
+
+    useEffect(() => {
+        api.get('profile', {
+            headers: {
+                Authorization: ongId
+            }
+        }).then(response => {
+            setIncidents(response.data);
+        })
+    }, [ongId]);
+
+    async function handleDeleteIncident(id){
+    
+     try {
+        await api.delete(`incidents/${id}`, {
+            headers: {
+                Authorization: ongId
+            }
+        });
+
+        // Atualiza o resultado da array incidents tras somente aquele que forem diferente do deletado
+        setIncidents(incidents.filter(incident => incident.id !== id));
+     }catch(error){
+        alert("Error ao deletar o caso, tente novamente.");
+     }
+    }
+
+    function handleLogout(){
+        localStorage.clear();
+        history.push('/');
+    }
+
     return (
         <div className="profile-container">
             <header>
                 <img src={logoImg} alt="Hero"/>
-                <span>Bem vinda, ONG</span>
-
+                <span>Bem vinda, {ongName}</span>
                 <Link  className="button" to="/incidents/new">cadastrar novo caso</Link>
-                <button type="button">
+                <button onClick={handleLogout} type="button">
                     <FiPower size={18} color="#E02041"/>
                    
                 </button>
             </header>
             <h1>Casos cadastrados</h1>
-
             <ul>
-                <li>
-                    <strong>CASO:</strong>
-                    <p>caso teste</p>
-
-                    <strong>DESCRIÇÃO:</strong>
-                    <p>Descrição teste</p>
-
-                    <strong>VALOR: </strong>
-                    <p>R$ 150,00</p>
-
-                    <button type="button">
-                        <FiTrash2 size={20} color="#a8a8ab3"/>
-                    </button>
-                </li>
-                <li>
-                    <strong>CASO:</strong>
-                    <p>caso teste</p>
-
-                    <strong>DESCRIÇÃO:</strong>
-                    <p>Descrição teste</p>
-
-                    <strong>VALOR: </strong>
-                    <p>R$ 150,00</p>
-
-                    <button type="button">
-                        <FiTrash2 size={20} color="#a8a8ab3"/>
-                    </button>
-                </li>
-                <li>
-                    <strong>CASO:</strong>
-                    <p>caso teste</p>
-
-                    <strong>DESCRIÇÃO:</strong>
-                    <p>Descrição teste</p>
-
-                    <strong>VALOR: </strong>
-                    <p>R$ 150,00</p>
-
-                    <button type="button">
-                        <FiTrash2 size={20} color="#a8a8ab3"/>
-                    </button>
-                </li>
-                <li>
-                    <strong>CASO:</strong>
-                    <p>caso teste</p>
-
-                    <strong>DESCRIÇÃO:</strong>
-                    <p>Descrição teste</p>
-
-                    <strong>VALOR: </strong>
-                    <p>R$ 150,00</p>
-
-                    <button type="button">
-                        <FiTrash2 size={20} color="#a8a8ab3"/>
-                    </button>
-                </li>
+               { incidents.map(incident => (
+                  <li key={incident.id}>
+                      <strong>CASO:</strong>
+                      <p>{incident.title}</p>
+  
+                      <strong>DESCRIÇÃO:</strong>
+                      <p>{incident.description}</p>
+  
+                      <strong>VALOR: </strong>
+                      <p>{Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(incident.value)}</p>
+  
+                      <button onClick={() => handleDeleteIncident(incident.id)} type="button">
+                          <FiTrash2 size={20} color="#a8a8ab3"/>
+                      </button>
+                  </li>
+               ))}
             </ul>
         </div>
     )
