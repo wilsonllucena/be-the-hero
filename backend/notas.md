@@ -45,3 +45,8 @@ npx  knex migrate:make create_ongs
 Executar migrations 
 
 npx knex migrate:latest
+
+--- RECAT 
+
+useEffect = DISPARA UMA FUNÇÃO DENTRO DE UM DETERMINADO COMPONENT
+useState = Usa se sempre o estado component para gravar alguma alteração na aplicação
