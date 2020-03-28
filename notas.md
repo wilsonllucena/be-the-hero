@@ -50,3 +50,26 @@ npx knex migrate:latest
 
 useEffect = DISPARA UMA FUNÇÃO DENTRO DE UM DETERMINADO COMPONENT
 useState = Usa se sempre o estado component para gravar alguma alteração na aplicação
+
+-- REACT NATIVE 
+
+sudo npm install -g expo-cli
+
+CRIANDO UM PROJETO EXPO
+
+expo init mobile
+
+não exit herança de estilo no React Native
+
+para criar rotas no React Native use 
+
+https://reactnavigation.org/docs/getting-started
+
+npm install @react-navigation/native
+
+expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
+
+Navegação por botoes ou link Stack Navigation
+
+npm install @react-navigation/stack
+
