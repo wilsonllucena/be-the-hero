@@ -17,6 +17,7 @@ describe('CREATE ONG', () => {
          await connection.destroy()
      })
 
+  
     it("Test create new ONG", async () => {
         //usando supertest para acessar a api
         const response =  await request(app)
@@ -32,5 +33,7 @@ describe('CREATE ONG', () => {
         expect(response.body).toHaveProperty('id') // Espero receber uma propriedade 'id'
         expect(response.body.id).toHaveLength(8) // Espero qu eo id tenha tamanho 8
     })
+
+
 })
 
