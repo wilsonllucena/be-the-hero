@@ -1,6 +1,5 @@
-const crypto = require('crypto');
 const connection = require('../database/connection');
-
+const generateUniqId = require('../Utils/generateUniqId');
 module.exports = {
 
     async index (request, response) {
@@ -15,7 +14,8 @@ module.exports = {
     const { name, email, whatsapp, city, uf } = request.body;
 
     //usando crypto para gerar numero aleatorio
-    const id = crypto.randomBytes(4).toString('HEX');
+    const id = generateUniqId();
+    
     await connection('ongs').insert({
         id, name, email, whatsapp, city, uf
     });

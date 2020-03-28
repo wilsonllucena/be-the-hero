@@ -1,0 +1,12 @@
+ Libs: Dependencias do meu Backend
+
+ "express": Framework NodeJs para ja vam com varios pacotes inclusive "Router
+ "knex": Esse cara é um tipo ORMQuery Builder para fazer a conexão com banco de dados escrever querys mais elegantes
+ "celebrate": Library para fazer validação da api da pra validar tudo que vem nos parametros da requisição
+ "cors": REsponsavel por liberar acesso externo a uma API
+ "cross-env":  Esse cara identifica em que ambiente eu estou "Production , "Test" , "Development"
+ 
+
+ "jest": Fazer teste automatizados em aplicaçãoes javascript
+ "supertest"; Biblioteca responsavel por fazer teste de API não se usa o axios para teste de integração
+ "nodemon": Responsavel manter a aplicação no ar e fica escutando o servidor as alterações e atualiza aplicação.
