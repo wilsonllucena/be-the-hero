@@ -25,6 +25,10 @@
     ],
     "ios": {
       "supportsTablet": true
+    },
+    "android": {
+      "package": "wilsonlucena.dev",
+      "versionCode": 1
     }
   }
 }
