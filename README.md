@@ -7,12 +7,12 @@
   🚀 Semana OmniStack 11.0
 </h4>
 <p align="center">
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/vinniciusgomes/be-the-hero">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/willucena/be-the-hero">
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/vinniciusgomes/be-the-hero">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/willucena/be-the-hero">
   
   <a href="https://github.com/Rocketseat/semana-omnistack-10/commits/master">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/vinniciusgomes/be-the-hero">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/willucena/be-the-hero">
   </a>
 
   <a href="https://github.com/Rocketseat/semana-omnistack-9/issues">
